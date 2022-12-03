@@ -2,21 +2,21 @@ from statistics import mean
 
 print("Calculadora de notas Chile")
 
-def vexigencia():
+def fexigencia():
     while True:
         try:
             return int(input("¿Cuál es el procentaje de exigencia?: ")) / 100
         except ValueError:
             print("Debes ingresar un número entero")
 
-def vpuntajeideal():
+def fpuntajeideal():
     while True:
         try:
             return int(input("¿Cuál es el puntaje ideal?: "))
         except ValueError:
             print("Debes ingresar un número entero")
 
-def vpuntaje():
+def fpuntaje():
     while True:
         try:
             return int(input("¿Cuál es tu puntaje obtenido?: "))
@@ -24,9 +24,9 @@ def vpuntaje():
             print("Debes ingresar un número entero")
 
 def calcular():
-    exigencia = vexigencia()
-    puntajeideal = vpuntajeideal()
-    puntaje = vpuntaje()
+    exigencia = fexigencia()
+    puntajeideal = fpuntajeideal()
+    puntaje = fpuntaje()
     if puntaje < exigencia * puntajeideal:
         nota = ((4 - 1) * (puntaje / (exigencia * puntajeideal))) + 1
     else:
