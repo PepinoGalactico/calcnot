@@ -34,7 +34,13 @@ def calcular():
     print(f"Tu nota es " "%.2f" % nota)
 
 def promedio():
-    notas = list(map(float, input("Escribe tus notas con un espacio de separacion y un punto en el decimal: ").split()))
+    notas = []
+    while True:
+        nota = input("Ingresa una nota con punto en el decimal (para finalizar escribe calcular): ")
+        if nota == "calcular":
+            break
+        else:
+            notas.append(float(nota))
     promedio = mean(notas)
     print(f"Tu promedio es " "%.2f" % promedio)
     
