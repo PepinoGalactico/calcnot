@@ -1,33 +1,49 @@
+from statistics import mean
+
 print("Calculadora de notas Chile")
 
-def e():
+def vexigencia():
     while True:
         try:
-            return int(input("¿Cuál es el procentaje de exigencia?: "))
+            return int(input("¿Cuál es el procentaje de exigencia?: ")) / 100
         except ValueError:
             print("Debes ingresar un número entero")
 
-def pmax():
+def vpuntajeideal():
     while True:
         try:
             return int(input("¿Cuál es el puntaje ideal?: "))
         except ValueError:
             print("Debes ingresar un número entero")
 
-def p():
+def vpuntaje():
     while True:
         try:
             return int(input("¿Cuál es tu puntaje obtenido?: "))
         except ValueError:
             print("Debes ingresar un número entero")
 
-e = e() / 100
-pmax = pmax()
-p = p()
+def calcular():
+    exigencia = vexigencia()
+    puntajeideal = vpuntajeideal()
+    puntaje = vpuntaje()
+    if puntaje < exigencia * puntajeideal:
+        nota = ((4 - 1) * (puntaje / (exigencia * puntajeideal))) + 1
+    else:
+        nota = ((7 - 4) * ((puntaje - exigencia * puntajeideal)/(puntajeideal * (1 - exigencia)))) + 4
+    print(f"Tu nota es " "%.2f" % nota)
 
-if p < e * pmax:
-    n = ((4 - 1) * (p / (e * pmax))) + 1
-else:
-    n = ((7 - 4) * ((p - e * pmax)/(pmax * (1 - e)))) + 4
+def promedio():
+    notas = list(map(float, input("Escribe tus notas con un espacio de separacion y un punto en el decimal: ").split()))
+    promedio = mean(notas)
+    print(f"Tu promedio es " "%.2f" % promedio)
+    
 
-print(f"Tu nota es {n:.2f}")
+while True:
+    funcion = input("Para calcular tu nota escribe calcular, para saber tu promedio de notas escribe promedio: ")
+    if funcion == "calcular":
+        calcular()
+    elif funcion == "promedio":
+        promedio()
+    break
+        
